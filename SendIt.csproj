@@ -9,14 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\avatar1.png" />
+    <None Remove="Images\avatar2.png" />
+    <None Remove="Images\avatar3.png" />
     <None Remove="Images\default_avatar.png" />
     <None Remove="Images\emoji_icon.png" />
     <None Remove="Images\send_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\default_avatar.png">
+    <Resource Include="Images\avatar1.png" />
+    <Resource Include="Images\avatar2.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatar3.png" />
+    <Resource Include="Images\default_avatar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\emoji_icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
