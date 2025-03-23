@@ -24,11 +24,14 @@
                 <MenuItem Header="Izhod" Click="ExitMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Stiki">
-                <MenuItem Header="Dodaj statično"/>
-                <MenuItem Header="Uredi statično"/>
+                <MenuItem Header="Dodaj statično" Command="{Binding AddStaticContactCommand}"/>
+                <MenuItem Header="Uredi statično" Command="{Binding EditStaticContactCommand}" 
+                          IsEnabled="{Binding CanEditOrRemove}"/>
                 <MenuItem Header="Dodaj"/>
-                <MenuItem Header="Uredi"/>
-                <MenuItem Header="Odstrani"/>
+                <MenuItem Header="Uredi" Command="{Binding EditStaticContactCommand}" 
+                          IsEnabled="{Binding CanEditOrRemove}"/>
+                <MenuItem Header="Odstrani" Command="{Binding RemoveContactCommand}" 
+                          IsEnabled="{Binding CanEditOrRemove}"/>
             </MenuItem>
         </Menu>
 
@@ -127,7 +130,8 @@
 
                 <DockPanel DockPanel.Dock="Bottom" Margin="0,10,0,0">
                     <Button DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,5"
-                           Background="{StaticResource MediumDarkGreen}">
+                            Command="{Binding SendMessageCommand}"
+                            Background="{StaticResource MediumDarkGreen}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/send_icon.png" Height="16" Width="16"/>
                             <TextBlock Text="Pošlji" Margin="5,0,0,0"/>
@@ -140,12 +144,19 @@
                             <TextBlock Text="Emoji" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Text="Type your message here..."/>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" 
+                             Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}"/>
                 </DockPanel>
 
-                <TextBlock Background="{StaticResource LighterGreen}" Padding="10" TextWrapping="Wrap">
-                    This is where the conversation will appear. Messages will be displayed here.
-                </TextBlock>
+                <ListBox Background="{StaticResource LighterGreen}" 
+                         ItemsSource="{Binding Conversation}" 
+                         BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="5" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </DockPanel>
         </Grid>
     </DockPanel>

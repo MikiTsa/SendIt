@@ -1,6 +1,4 @@
-﻿using SendIt.Models;
-using System;
-using System.Collections.ObjectModel;
+﻿using SendIt.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,27 +7,14 @@ namespace SendIt
 {
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Contact> Contacts { get; set; }
-        private Contact _selectedContact;
-
-        public Contact SelectedContact
-        {
-            get { return _selectedContact; }
-            set { _selectedContact = value; }
-        }
+        public MainViewModel ViewModel { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Contacts = new ObservableCollection<Contact>
-            {
-                new Contact("Contact 1", "Online", "/Images/avatar1.png", "contact1@example.com", "+1 234 567 890", DateTime.Now.AddMinutes(-5)),
-                new Contact("Contact 2", "Away", "/Images/avatar2.png", "contact2@example.com", "+1 234 567 891", DateTime.Now.AddHours(-1)),
-                new Contact("Contact 3", "Busy", "/Images/avatar3.png", "contact3@example.com", "+1 234 567 892", DateTime.Now.AddHours(-3))
-            };
-
-            DataContext = this;
+            ViewModel = new MainViewModel();
+            DataContext = ViewModel;
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
@@ -41,7 +26,7 @@ namespace SendIt
         {
             if (contactsListView.SelectedItem != null)
             {
-                Contact selectedContact = (Contact)contactsListView.SelectedItem;
+                var selectedContact = (Models.Contact)contactsListView.SelectedItem;
                 MessageBox.Show($"Selected contact: {selectedContact.Nickname}", "Contact Selected", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
@@ -50,7 +35,7 @@ namespace SendIt
         {
             if (contactsListView.SelectedItem != null)
             {
-                Contact selectedContact = (Contact)contactsListView.SelectedItem;
+                var selectedContact = (Models.Contact)contactsListView.SelectedItem;
 
                 selectedContact.Status = selectedContact.Status switch
                 {
