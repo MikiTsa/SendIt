@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendIt"
         mc:Ignorable="d"
-        Title="SendIt" Height="450" Width="800" MinHeight="400" MinWidth="600">
+        Title="SendIt" Height="550" Width="800" MinHeight="550" MinWidth="700">
     <Window.Resources>
         <SolidColorBrush x:Key="LightestGreen" Color="#D0F0E7"/>
         <SolidColorBrush x:Key="LighterGreen" Color="#AEE6D6"/>
@@ -88,10 +88,30 @@
                             </Grid>
 
                             <DataTemplate.Triggers>
-                                <DataTrigger Binding="{Binding IsOnline}" Value="True">
-                                    <Setter TargetName="NicknameText" Property="Foreground" Value="Green"/>
+                                <DataTrigger Binding="{Binding Status}" Value="Online">
+                                    <Setter TargetName="StatusIndicator" Property="Fill" Value="Green"/>
                                     <Setter TargetName="StatusIndicator" Property="Width" Value="12"/>
                                     <Setter TargetName="StatusIndicator" Property="Height" Value="12"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding Status}" Value="Away">
+                                    <Setter TargetName="StatusIndicator" Property="Fill" Value="Orange"/>
+                                    <Setter TargetName="StatusIndicator" Property="Width" Value="10"/>
+                                    <Setter TargetName="StatusIndicator" Property="Height" Value="10"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding Status}" Value="Busy">
+                                    <Setter TargetName="StatusIndicator" Property="Fill" Value="Red"/>
+                                    <Setter TargetName="StatusIndicator" Property="Width" Value="10"/>
+                                    <Setter TargetName="StatusIndicator" Property="Height" Value="10"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding Status}" Value="Invisible">
+                                    <Setter TargetName="NicknameText" Property="Foreground" Value="Gray"/>
+                                    <Setter TargetName="StatusIndicator" Property="Fill" Value="Gray"/>
+                                    <Setter TargetName="StatusIndicator" Property="Width" Value="8"/>
+                                    <Setter TargetName="StatusIndicator" Property="Height" Value="8"/>
+                                    <Setter TargetName="StatusIndicator" Property="Opacity" Value="0.7"/>
                                 </DataTrigger>
                             </DataTemplate.Triggers>
                         </DataTemplate>
