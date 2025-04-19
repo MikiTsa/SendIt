@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:SendIt"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="LightestGreen" Color="#D0F0E7"/>
+        <SolidColorBrush x:Key="LighterGreen" Color="#AEE6D6"/>
+        <SolidColorBrush x:Key="LightGreen" Color="#8FDDC6"/>
+        <SolidColorBrush x:Key="MediumLightGreen" Color="#73D5B8"/>
+        <SolidColorBrush x:Key="MediumGreen" Color="#5ACEAB"/>
+        <SolidColorBrush x:Key="MediumDarkGreen" Color="#41C79E"/>
+        <SolidColorBrush x:Key="DarkGreen" Color="#35B58E"/>
+        <SolidColorBrush x:Key="DarkerGreen" Color="#2FA17E"/>
+        <SolidColorBrush x:Key="DarkestGreen" Color="#2A8F70"/>
     </Application.Resources>
 </Application>

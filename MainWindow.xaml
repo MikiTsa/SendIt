@@ -6,17 +6,6 @@
         xmlns:local="clr-namespace:SendIt"
         mc:Ignorable="d"
         Title="SendIt" Height="550" Width="800" MinHeight="550" MinWidth="700">
-    <Window.Resources>
-        <SolidColorBrush x:Key="LightestGreen" Color="#D0F0E7"/>
-        <SolidColorBrush x:Key="LighterGreen" Color="#AEE6D6"/>
-        <SolidColorBrush x:Key="LightGreen" Color="#8FDDC6"/>
-        <SolidColorBrush x:Key="MediumLightGreen" Color="#73D5B8"/>
-        <SolidColorBrush x:Key="MediumGreen" Color="#5ACEAB"/>
-        <SolidColorBrush x:Key="MediumDarkGreen" Color="#41C79E"/>
-        <SolidColorBrush x:Key="DarkGreen" Color="#35B58E"/>
-        <SolidColorBrush x:Key="DarkerGreen" Color="#2FA17E"/>
-        <SolidColorBrush x:Key="DarkestGreen" Color="#2A8F70"/>
-    </Window.Resources>
 
     <DockPanel Background="{StaticResource LightestGreen}">
         <Menu DockPanel.Dock="Top" Background="{StaticResource MediumGreen}">
@@ -27,8 +16,8 @@
                 <MenuItem Header="Dodaj statično" Command="{Binding AddStaticContactCommand}"/>
                 <MenuItem Header="Uredi statično" Command="{Binding EditStaticContactCommand}" 
                           IsEnabled="{Binding CanEditOrRemove}"/>
-                <MenuItem Header="Dodaj"/>
-                <MenuItem Header="Uredi" Command="{Binding EditStaticContactCommand}" 
+                <MenuItem Header="Dodaj" Command="{Binding AddContactCommand}"/>
+                <MenuItem Header="Uredi" Command="{Binding EditContactCommand}" 
                           IsEnabled="{Binding CanEditOrRemove}"/>
                 <MenuItem Header="Odstrani" Command="{Binding RemoveContactCommand}" 
                           IsEnabled="{Binding CanEditOrRemove}"/>
