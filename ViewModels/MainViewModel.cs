@@ -127,7 +127,7 @@ namespace SendIt.ViewModels
         private void AddContact(object parameter)
         {
             var addWindow = new AddContactWindow();
-            addWindow.Owner = Application.Current.MainWindow; // Set owner to main window
+            addWindow.Owner = Application.Current.MainWindow; 
 
             if (addWindow.ShowDialog() == true) // ShowDialog blocks until window is closed
             {
@@ -146,9 +146,9 @@ namespace SendIt.ViewModels
             if (_editWindow == null)
             {
                 _editWindow = new EditContactWindow(this);
-                _editWindow.Owner = Application.Current.MainWindow; // Set owner
+                _editWindow.Owner = Application.Current.MainWindow;
                 _editWindow.WindowClosed += (s, e) => _editWindow = null;
-                _editWindow.Show(); // Use Show() for non-modal
+                _editWindow.Show(); // Show() for non-modal
             }
             else
             {

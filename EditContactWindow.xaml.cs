@@ -2,6 +2,7 @@
 using SendIt.ViewModels;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -18,7 +19,18 @@ namespace SendIt
             _viewModel = viewModel;
             DataContext = _viewModel;
 
-            // Make sure this window always appears above main window
+            if (_viewModel.SelectedContact != null)
+            {
+                foreach (ComboBoxItem item in cmbStatus.Items)
+                {
+                    if (item.Content.ToString() == _viewModel.SelectedContact.Status)
+                    {
+                        cmbStatus.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+
             Owner = Application.Current.MainWindow;
         }
 
@@ -37,6 +49,14 @@ namespace SendIt
             {
                 string selectedAvatarPath = openFileDialog.FileName;
                 _viewModel.SelectedContact.Avatar = new BitmapImage(new Uri(selectedAvatarPath));
+            }
+        }
+
+        private void CmbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_viewModel.SelectedContact != null && cmbStatus.SelectedItem is ComboBoxItem selectedItem)
+            {
+                _viewModel.SelectedContact.Status = selectedItem.Content.ToString();
             }
         }
 

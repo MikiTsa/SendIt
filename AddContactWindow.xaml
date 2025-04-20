@@ -13,7 +13,7 @@
             <Button x:Name="btnCancel" Content="Cancel" Width="80" Margin="5,0" IsCancel="True" Background="{StaticResource MediumGreen}"/>
             <Button x:Name="btnAdd" Content="Add" Width="80" Margin="5,0" IsDefault="True" Background="{StaticResource MediumDarkGreen}"/>
         </StackPanel>
-
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -29,18 +29,15 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Avatar -->
             <Label Grid.Row="0" Grid.Column="0" Content="Avatar:" VerticalAlignment="Center" Margin="0,5"/>
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                 <Image x:Name="imgAvatar" Width="64" Height="64" Source="/Images/default_avatar.png" Margin="0,5" MouseDown="ImgAvatar_MouseDown"/>
                 <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap">Click on image to select a new avatar</TextBlock>
             </StackPanel>
-
-            <!-- Nickname -->
+            
             <Label Grid.Row="1" Grid.Column="0" Content="Nickname:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtNickname" Margin="0,5"/>
-
-            <!-- Status -->
+            
             <Label Grid.Row="2" Grid.Column="0" Content="Status:" VerticalAlignment="Center" Margin="0,5"/>
             <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmbStatus" Margin="0,5">
                 <ComboBoxItem Content="Online" IsSelected="True"/>
@@ -48,16 +45,13 @@
                 <ComboBoxItem Content="Busy"/>
                 <ComboBoxItem Content="Invisible"/>
             </ComboBox>
-
-            <!-- Email -->
+            
             <Label Grid.Row="3" Grid.Column="0" Content="Email:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtEmail" Margin="0,5"/>
-
-            <!-- Phone Number -->
+            
             <Label Grid.Row="4" Grid.Column="0" Content="Phone:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtPhoneNumber" Margin="0,5"/>
-
-            <!-- Last Seen -->
+            
             <Label Grid.Row="5" Grid.Column="0" Content="Last Seen:" VerticalAlignment="Center" Margin="0,5"/>
             <DatePicker Grid.Row="5" Grid.Column="1" x:Name="dpLastSeen" Margin="0,5"/>
         </Grid>
