@@ -6,14 +6,16 @@
         xmlns:local="clr-namespace:SendIt"
         mc:Ignorable="d"
         Title="Add New Contact" Height="450" Width="400" 
-        Background="{StaticResource LightestGreen}"
+        Style="{StaticResource AppWindowStyle}"
         SizeToContent="Height">
-    <DockPanel Margin="10">
+    <DockPanel Style="{StaticResource MainDockPanelStyle}" Margin="10">
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-            <Button x:Name="btnCancel" Content="Cancel" Width="80" Margin="5,0" IsCancel="True" Background="{StaticResource MediumGreen}"/>
-            <Button x:Name="btnAdd" Content="Add" Width="80" Margin="5,0" IsDefault="True" Background="{StaticResource MediumDarkGreen}"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="80" Margin="5,0" IsCancel="True" 
+                    Style="{StaticResource SecondaryButtonStyle}"/>
+            <Button x:Name="btnAdd" Content="Add" Width="80" Margin="5,0" IsDefault="True" 
+                    Style="{StaticResource PrimaryButtonStyle}"/>
         </StackPanel>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -34,10 +36,10 @@
                 <Image x:Name="imgAvatar" Width="64" Height="64" Source="/Images/default_avatar.png" Margin="0,5" MouseDown="ImgAvatar_MouseDown"/>
                 <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap">Click on image to select a new avatar</TextBlock>
             </StackPanel>
-            
+
             <Label Grid.Row="1" Grid.Column="0" Content="Nickname:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtNickname" Margin="0,5"/>
-            
+
             <Label Grid.Row="2" Grid.Column="0" Content="Status:" VerticalAlignment="Center" Margin="0,5"/>
             <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmbStatus" Margin="0,5">
                 <ComboBoxItem Content="Online" IsSelected="True"/>
@@ -45,13 +47,13 @@
                 <ComboBoxItem Content="Busy"/>
                 <ComboBoxItem Content="Invisible"/>
             </ComboBox>
-            
+
             <Label Grid.Row="3" Grid.Column="0" Content="Email:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtEmail" Margin="0,5"/>
-            
+
             <Label Grid.Row="4" Grid.Column="0" Content="Phone:" VerticalAlignment="Center" Margin="0,5"/>
             <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtPhoneNumber" Margin="0,5"/>
-            
+
             <Label Grid.Row="5" Grid.Column="0" Content="Last Seen:" VerticalAlignment="Center" Margin="0,5"/>
             <DatePicker Grid.Row="5" Grid.Column="1" x:Name="dpLastSeen" Margin="0,5"/>
         </Grid>

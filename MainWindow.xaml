@@ -5,22 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendIt"
         mc:Ignorable="d"
-        Title="SendIt" Height="550" Width="800" MinHeight="550" MinWidth="700">
+        Title="SendIt" Height="550" Width="800" MinHeight="550" MinWidth="700"
+        Style="{StaticResource AppWindowStyle}">
 
-    <DockPanel Background="{StaticResource LightestGreen}">
-        <Menu DockPanel.Dock="Top" Background="{StaticResource MediumGreen}">
-            <MenuItem Header="Datoteka">
-                <MenuItem Header="Izhod" Click="ExitMenuItem_Click"/>
+    <DockPanel Style="{StaticResource MainDockPanelStyle}">
+        <Menu DockPanel.Dock="Top" Style="{StaticResource MainMenuStyle}">
+            <MenuItem Header="Datoteka" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="Izhod" Click="ExitMenuItem_Click" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
-            <MenuItem Header="Stiki">
-                <MenuItem Header="Dodaj statično" Command="{Binding AddStaticContactCommand}"/>
+            <MenuItem Header="Stiki" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="Dodaj statično" Command="{Binding AddStaticContactCommand}" Style="{StaticResource MenuItemStyle}"/>
                 <MenuItem Header="Uredi statično" Command="{Binding EditStaticContactCommand}" 
-                          IsEnabled="{Binding CanEditOrRemove}"/>
-                <MenuItem Header="Dodaj" Command="{Binding AddContactCommand}"/>
+                          IsEnabled="{Binding CanEditOrRemove}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="Dodaj" Command="{Binding AddContactCommand}" Style="{StaticResource MenuItemStyle}"/>
                 <MenuItem Header="Uredi" Command="{Binding EditContactCommand}" 
-                          IsEnabled="{Binding CanEditOrRemove}"/>
+                          IsEnabled="{Binding CanEditOrRemove}" Style="{StaticResource MenuItemStyle}"/>
                 <MenuItem Header="Odstrani" Command="{Binding RemoveContactCommand}" 
-                          IsEnabled="{Binding CanEditOrRemove}"/>
+                          IsEnabled="{Binding CanEditOrRemove}" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
         </Menu>
 
@@ -30,21 +31,20 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DockPanel Grid.Column="0" Margin="10" Background="{StaticResource LighterGreen}">
+            <DockPanel Grid.Column="0" Style="{StaticResource ContactsPanelStyle}">
                 <StackPanel DockPanel.Dock="Top" Margin="0,0,0,10">
                     <Image Height="64" Width="64" Source="/Images/default_avatar.png" Margin="0,10,0,5"/>
                     <Label Content="MikiTsa" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </StackPanel>
 
                 <Button DockPanel.Dock="Bottom" Content="Change Status" Click="ChangeStatus_Click" 
-                        Background="{StaticResource MediumDarkGreen}" Margin="0,10,0,0" Padding="5"/>
+                        Style="{StaticResource BaseButtonStyle}" Margin="0,10,0,0"/>
 
                 <ListView x:Name="contactsListView" 
                           ItemsSource="{Binding Contacts}"
                           SelectedItem="{Binding SelectedContact, Mode=TwoWay}"
-                          MouseDoubleClick="ContactsListView_DoubleClick" 
-                          Background="{StaticResource LighterGreen}" 
-                          BorderThickness="0">
+                          MouseDoubleClick="ContactsListView_DoubleClick"
+                          Style="{StaticResource ContactListStyle}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="5">
@@ -63,20 +63,20 @@
                    Source="{Binding Avatar}" Width="40" Height="40" Margin="0,0,10,0"/>
 
                                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                                    <TextBlock x:Name="NicknameText" Text="{Binding Nickname}" FontWeight="Bold"/>
+                                    <TextBlock x:Name="NicknameText" Text="{Binding Nickname}" Style="{StaticResource HeaderTextStyle}"/>
                                     <Ellipse x:Name="StatusIndicator" Width="10" Height="10" Margin="5,0,0,0" 
                          Fill="{Binding StatusColor}" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <TextBlock Grid.Row="1" Grid.Column="1" 
                        Text="{Binding LastSeenFormatted, StringFormat='Last seen: {0}'}" 
-                       FontSize="11" Opacity="0.7"/>
+                       Style="{StaticResource SubtitleTextStyle}"/>
 
                                 <TextBlock Grid.Row="2" Grid.Column="1" 
-                       Text="{Binding PhoneNumber}" FontSize="11" Opacity="0.7"/>
+                       Text="{Binding PhoneNumber}" Style="{StaticResource SubtitleTextStyle}"/>
 
                                 <TextBlock Grid.Row="3" Grid.Column="1" 
-                       Text="{Binding Email}" FontSize="11" Opacity="0.7"/>
+                       Text="{Binding Email}" Style="{StaticResource SubtitleTextStyle}"/>
                             </Grid>
 
                             <DataTemplate.Triggers>
@@ -114,26 +114,25 @@
             <DockPanel Grid.Column="1" Margin="10">
                 <TextBox DockPanel.Dock="Top" 
                          Text="{Binding SelectedContact.Nickname, StringFormat='Chat with {0}', FallbackValue='Select a contact'}" 
-                         FontWeight="Bold" IsReadOnly="True" 
-                         BorderThickness="0" Background="Transparent" Margin="0,0,0,10"/>
+                         Style="{StaticResource ReadOnlyTextStyle}"/>
 
                 <DockPanel DockPanel.Dock="Bottom" Margin="0,10,0,0">
-                    <Button DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,5"
+                    <Button DockPanel.Dock="Right" Margin="10,0,0,0"
                             Command="{Binding SendMessageCommand}"
-                            Background="{StaticResource MediumDarkGreen}">
+                            Style="{StaticResource PrimaryButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/send_icon.png" Height="16" Width="16"/>
                             <TextBlock Text="Pošlji" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <Button DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,5"
-                           Background="{StaticResource MediumDarkGreen}">
+                    <Button DockPanel.Dock="Right" Margin="10,0,0,0"
+                           Style="{StaticResource SecondaryButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/emoji_icon.png" Height="16" Width="16"/>
                             <TextBlock Text="Emoji" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" 
+                    <TextBox Style="{StaticResource ChatInputStyle}"
                              Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}"/>
                 </DockPanel>
 
