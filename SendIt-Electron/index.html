@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>SendIt - Contact Viewer</title>
+  <link rel="stylesheet" href="css/light.css" id="theme-css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>SendIt - Contact Viewer</h1>
+    <button id="settings-btn">Settings</button>
+  </header>
+  
+  <main>
+    <div class="contact-card">
+      <img id="avatar" src="img/default_avatar.png" alt="Contact Avatar" class="avatar">
+      <div class="contact-details">
+        <h2 id="nickname">Contact 1</h2>
+        <div class="status-indicator">
+          <span id="status-circle" class="status-online"></span>
+          <span id="status-text">Online</span>
+        </div>
+        <p><strong>Email:</strong> <span id="email">contact1@example.com</span></p>
+        <p><strong>Phone:</strong> <span id="phone">+1 234 567 890</span></p>
+        <p><strong>Last Seen:</strong> <span id="last-seen">Just now</span></p>
+      </div>
+    </div>
+  </main>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>

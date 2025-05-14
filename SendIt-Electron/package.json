@@ -1,0 +1,17 @@
+{
+  "name": "sendit-electron",
+  "version": "1.0.0",
+  "description": "SendIt Contact Viewer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["electron", "sendit", "contacts"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^36.2.0"
+  }
+}

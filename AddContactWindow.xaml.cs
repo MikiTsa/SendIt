@@ -75,14 +75,12 @@ namespace SendIt
 
         private bool ValidateInput()
         {
-            // Validate Nickname
             if (string.IsNullOrWhiteSpace(txtNickname.Text))
             {
                 MessageBox.Show("Nickname cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            // Validate Email
             if (!string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
@@ -98,7 +96,6 @@ namespace SendIt
                 return false;
             }
 
-            // Validate Phone Number (simple validation)
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
             {
                 MessageBox.Show("Phone number cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
