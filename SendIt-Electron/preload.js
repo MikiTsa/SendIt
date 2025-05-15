@@ -19,6 +19,18 @@ contextBridge.exposeInMainWorld(
       ipcRenderer.on('theme-update', (event, theme) => {
         callback(theme);
       });
+    },
+    
+    // Function 4: Load contact data from file
+    loadContactData: () => {
+      ipcRenderer.send('load-contact-data');
+    },
+    
+    // Function 5: Listen for contact data updates
+    onContactDataUpdate: (callback) => {
+      ipcRenderer.on('contact-data-update', (event, contactData) => {
+        callback(contactData);
+      });
     }
   }
 );
