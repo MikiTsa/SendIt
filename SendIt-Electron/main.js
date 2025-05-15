@@ -4,15 +4,13 @@ const fs = require('fs');
 
 let mainWindow;
 let settingsWindow;
-let currentTheme = 'light'; // Default theme
+let currentTheme = 'light'; 
 let lastLoadedContactPath = '';
 
-// Path to store app settings
 const userDataPath = app.getPath('userData');
 const lastContactFilePath = path.join(userDataPath, 'last-contact.json');
 const settingsFilePath = path.join(userDataPath, 'settings.json');
 
-// Load app settings
 function loadAppSettings() {
   try {
     if (fs.existsSync(settingsFilePath)) {
@@ -26,7 +24,6 @@ function loadAppSettings() {
   }
 }
 
-// Save app settings
 function saveAppSettings() {
   try {
     const settings = {
@@ -55,10 +52,8 @@ function createMainWindow() {
     app.quit();
   });
   
-  // After window is loaded, apply the current theme
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.send('theme-update', currentTheme);
-    // Load last contact data after window is loaded
     loadLastContactData();
   });
 }
@@ -87,13 +82,11 @@ function createSettingsWindow() {
     settingsWindow = null;
   });
   
-  // When settings window is ready, send the current theme
   settingsWindow.webContents.on('did-finish-load', () => {
     settingsWindow.webContents.send('theme-update', currentTheme);
   });
 }
 
-// Load last saved contact data
 function loadLastContactData() {
   try {
     if (fs.existsSync(lastContactFilePath)) {
@@ -110,7 +103,6 @@ function loadLastContactData() {
   }
 }
 
-// Save last loaded contact data
 function saveLastContactData() {
   if (lastLoadedContactPath) {
     try {
@@ -123,28 +115,23 @@ function saveLastContactData() {
 }
 
 app.whenReady().then(() => {
-  // Load settings before creating windows
   loadAppSettings();
   createMainWindow();
   
-  // IPC handlers
   ipcMain.on('open-settings', () => {
     createSettingsWindow();
   });
   
   ipcMain.on('change-theme', (event, theme) => {
     currentTheme = theme;
-    // Save the theme setting immediately when changed
     saveAppSettings();
     
-    // Send theme update to all windows
     mainWindow.webContents.send('theme-update', theme);
     if (settingsWindow) {
       settingsWindow.webContents.send('theme-update', theme);
     }
   });
   
-  // Handle loading contact data
   ipcMain.on('load-contact-data', async () => {
     const { canceled, filePaths } = await dialog.showOpenDialog(mainWindow, {
       title: 'Select Contact JSON File',
