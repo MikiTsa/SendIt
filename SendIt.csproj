@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Speech" Version="9.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\avatar1.png" />
     <Resource Include="Images\avatar2.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

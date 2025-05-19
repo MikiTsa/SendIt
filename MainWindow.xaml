@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SendIt"
         mc:Ignorable="d"
         Title="SendIt" Height="550" Width="800" MinHeight="550" MinWidth="700"
-        Style="{StaticResource AppWindowStyle}">
+        Style="{StaticResource AppWindowStyle}"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
 
     <DockPanel Style="{StaticResource MainDockPanelStyle}">
         <Menu DockPanel.Dock="Top" Style="{StaticResource MainMenuStyle}">
@@ -23,7 +25,22 @@
                 <MenuItem Header="Odstrani" Command="{Binding RemoveContactCommand}" 
                           IsEnabled="{Binding CanEditOrRemove}" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
+            <MenuItem Header="Govor" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="Aktiviraj glasovne ukaze" Click="ActivateSpeechMenuItem_Click" 
+                          x:Name="menuActivateSpeech" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="Deaktiviraj glasovne ukaze" Click="DeactivateSpeechMenuItem_Click" 
+                          x:Name="menuDeactivateSpeech" IsEnabled="False" Style="{StaticResource MenuItemStyle}"/>
+            </MenuItem>
         </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom" Background="{StaticResource MediumGreen}">
+            <StatusBarItem>
+                <TextBlock x:Name="txtSpeechStatus" Text="Voice commands inactive" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="txtAvailableCommands" TextWrapping="Wrap" Margin="10,0,0,0" />
+            </StatusBarItem>
+        </StatusBar>
 
         <Grid>
             <Grid.ColumnDefinitions>
